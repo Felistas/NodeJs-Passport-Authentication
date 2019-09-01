@@ -1,0 +1,32 @@
+{
+  "name": "nodejs-passport-authentication",
+  "version": "1.0.0",
+  "description": "A simple Node/Express JS API for social user authentication using Passport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel app --out-dir dist",
+    "start": "nodemon --exec babel-node app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Felistas/NodeJs-Passport-Authentication.git"
+  },
+  "author": "Felistas Ngumi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Felistas/NodeJs-Passport-Authentication/issues"
+  },
+  "homepage": "https://github.com/Felistas/NodeJs-Passport-Authentication#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "nodemon": "^1.19.1"
+  }
+}
