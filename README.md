@@ -1,4 +1,4 @@
-# Social Authentication in Node/Express with Passport
+# Google And FaceBook Social Authentication in Node/Express Js with Passport
 ## Outline Takeaways
 1. Introduction
 2. Project setup
