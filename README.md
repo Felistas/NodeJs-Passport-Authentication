@@ -10,7 +10,11 @@
 In this tutorial, we will create a simple Node JS API then implement user authentication through OAuth using Google and Facebook.
 
 ## Project Setup
-I have created a simple Node Js API that I will guide the readers in installing it and understanding how the project is setup. 
+I have created a simple Node Js API that I will guide the readers in installing it and understanding how the project is setup.
+
+## What is OAuth and how does it work?
+I will guide the readers on understanding OAuth and the communication flow between our Node API and the social login APIs.
+
 ## Google Authentication 
  - Take readers through authentication with Google using Passport
  
