@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
-export const connect = () => {
+export const connect = async () => {
   const db = mongoose.connection;
 
-  mongoose.connect("mongodb://localhost/User", {
+  mongoose.connect("mongodb://localhost/TestDb", {
     useNewUrlParser: true
   });
 
   db.on("error", console.error.bind(console, "connection error:"));
-  db.once("open", () => {
+  await db.once("open", () => {
     console.log("Db connected successfully");
   });
 };
