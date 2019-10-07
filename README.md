@@ -1,2 +1,2 @@
-# NodeJs-Passport-Authentication
-A simple Node JS API for user authentication 
+# FaceBook Social Authentication in Node/Express Js with Passport
+## Introduction
