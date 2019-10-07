@@ -1,5 +1,10 @@
 const UserController = (req, res) => {
-  res.send("Users");
+  const sampleData = {
+    firstName: "Felistas",
+    lastName: "Ngumi",
+    email: "felistas@gmail.com"
+  };
+  res.send(sampleData);
 };
 
 export default UserController;
