@@ -7,19 +7,24 @@ Thanks to OAuth, we can use popular social media applications such as Google, Fa
  #explain more about OAuth
 
 ## Prerequisites
-1. Node Version 10.16.0 or higher
-2. Facebook Developer account
-3. Mongo Db
+1. [Node](https://nodejs.org/en/)
+2. [Facebook Developer account](https://developers.facebook.com/)
+3. [Mongo Db](https://docs.mongodb.com/manual/installation/)
 
 ## Getting Started
 Follow the instructions below in your prefered terminal in order to setup your development environment:
+```
+mkdir demo
+cd demo
+git clone https://github.com/Felistas/NodeJs-Passport-Authentication.git
+cd NodeJs-Passport-Authentication
+```
 
-1. mkdir demo
-2. cd demo
-3. Clone this repo `git clone https://github.com/Felistas/NodeJs-Passport-Authentication.git`
-4. cd NodeJs-Passport-Authentication
-5. Run `npm install` to install all the dependancies required to run the project
-6. Run `npm start` to start the API.
+Next run:
+```
+npm install
+npm start
+```
 
 To confirm everything is working as expected, open your preferred REST Client (Insomnia is my preference), make a request to the following endpoint `http://localhost:3000/users` and cofirm the response is as below:
 
