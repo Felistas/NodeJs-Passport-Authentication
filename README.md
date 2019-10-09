@@ -28,3 +28,8 @@ npm start
 
 To confirm everything is working as expected, open your preferred REST Client (Insomnia is my preference), make a request to the following endpoint `http://localhost:3000/users` and cofirm the response is as below:
 
+
+![Home](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/Screen%20Shot%202019-10-09%20at%2017.28.04.png)
+
+
+
