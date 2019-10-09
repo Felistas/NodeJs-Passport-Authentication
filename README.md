@@ -32,4 +32,10 @@ To confirm everything is working as expected, open your preferred REST Client (I
 ![Home](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/Screen%20Shot%202019-10-09%20at%2017.28.04.png)
 
 
+## Project Setup
+
+In order to understand how our project is setup, we will go through the individual folder structures which follow the MVC (Model View Controller) pattern. Just a recap of the MVC pattern, the model defines the schema of the data in the database and how it will be stored. Controllers hold the business logic of the application while view holds all our routes.
+
+Inside the `app` folder, we have ` user` and `utils` folders which are responsible for the user resource and database configuration respecively. The `index.js` file, which is the entry point of our app, is responsible for express setup. In this project, I will use ES6 then use Babel to compile the code. I have also configured nodemon to listen to any changes made to the app then reload the server. 
+
 
