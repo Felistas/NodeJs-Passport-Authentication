@@ -8,4 +8,6 @@ A simple Node JS API for user authentication using Passport.
 
 2. Navigate to `NodeJs-Passport-Authentication` folder then run `npm install` to install the dependancies required to have the API up and running
 
+3. Run `npm start` in order to run the API
+
 
