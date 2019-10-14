@@ -1,6 +1,6 @@
 # FaceBook Social Authentication in Node/Express Js with Passport
 ## Introduction
-Almost all applications today, require users to create accounts in their websites in order to use certain services. This repititive process of setting up new profiles and creating new passwords for every application is not only time consuming but also frustrating, and over time, account management becomes hard since one has to remember their credential details  in every application. 
+Almost all applications today, require users to create accounts in their websites in order to use certain services. This repetitive process of setting up new profiles and creating new passwords for every application is not only time consuming but also frustrating, and over time, account management becomes hard since one has to remember their credential details  in every application. 
 
 Thanks to OAuth, we can use popular social media applications such as Google, Facebook and Twitter to authenticate users. This process is faster and familiar to the users hence a high chance of most of them agreeing to use your services. So why not integrate it into your application? In this tutorial I will take you through on how to integrate FaceBook into your Node Js application.
 
@@ -36,10 +36,10 @@ To confirm everything is working as expected, open your preferred REST Client (I
 
 In order to understand how our project is setup, we will go through the individual folder structures which follow the MVC (Model View Controller) pattern. Just a recap of the MVC pattern, the model defines the schema of the data in the database and how it will be stored. Controllers hold the business logic of the application while view holds all our routes.
 
-Inside the `app` folder, we have ` user` and `utils` folders which are responsible for the user resource and database configuration respecively. The `index.js` file, which is the entry point of our app, is responsible for express setup. In this project, I will use ES6 then use Babel to compile the code. I have also configured nodemon to listen to any changes made to the app then reload the server.
+Inside the `app` folder, we have ` user` and `utils` folders which are responsible for the user resource and database configuration respectively. The `index.js` file, which is the entry point of our app, is responsible for express setup. In this project, I will use ES6 then use Babel to compile the code. I have also configured nodemon to listen to any changes made to the app then reload the server.
 
 ## OAuth 2
-[OAuth 2](https://oauth.net/2/) is an authorization framework that allows third party applications to obtain limited access to HTTP services, either on behalf of the resource owner without having them provide their login cedentials to the third party app or by allowing these third party applications to obtain access on thier on behalfs. Case in example here would be the application we are building acting as the third party application, facebook being our HTTP service and the end user as the resource owner. These three fall under the following OAuth roles:
+[OAuth 2](https://oauth.net/2/) is an authorization framework that allows third party applications to obtain limited access to HTTP services, either on behalf of the resource owner without having them provide their login credentials to a third party app or by allowing these third party applications to obtain access on their on behalfs. Case in example here would be the application we are building acting as a third party application, facebook being our HTTP service and the end user as the resource owner. These three fall under the following OAuth roles:
 
 1. Resource Owner/ End user - this is the user authorizing a third party application to access certain protected resources from a resource server. 
 2. Client - This is the third party application making protected resource requests to a resource server on behalf of the resource owner
@@ -58,13 +58,13 @@ In order for a successful user authentication to happen, a series of steps need 
 Note: OAuth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)
 
 ## Passport
-According to the official documentation, passport an authentication middleware for Node Js and supports a number of strategies including FaceBook, Google, Twitter etc. Now,lets get our hands dirty and get the FaceBook authentication up and running. To start us of, run the following commands to install the various dependancies needed:
+According to the official documentation, passport an authentication middleware for Node Js and supports a number of strategies including FaceBook, Google, Twitter etc. Now,lets get our hands dirty and get the FaceBook authentication up and running. To start us of, run the following commands to install the various dependencies needed:
 
 ```
 npm install passport
 npm install passport-facebook
 ```
-The `passport-facebook` package enables us to authenticate users using Facebook. In `app/user/user.controller.js` replace the exising code with the following lines of code:
+The `passport-facebook` package enables us to authenticate users using Facebook. In `app/user/user.controller.js` replace the existing code with the following lines of code:
 
 ```
 import passport from "passport";
@@ -178,4 +178,4 @@ Upon successful validation of your credentials, you will be redirected to succes
 ![Success](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/success.png)
 
 ## Conclusion
-In this tutorial, we learned how to authenticate users using Facebook in a Node Js application. The process should also be simillar and straight forward for other platforms like Google, Github and Twitter. I would love to hear from you! You can reach me on [Twitter](https://twitter.com/WaceeraN),  [LinkedIn](https://www.linkedin.com/in/felistas-ngumi-b6063192/LinkedIn) or drop me an [email](felistaswaceera@gmail.com). Happy hacking!
+In this tutorial, we learned how to authenticate users using Facebook in a Node Js application. The process should also be similar and straight forward for other platforms like Google, Github and Twitter. I would love to hear from you! You can reach me on [Twitter](https://twitter.com/WaceeraN),  [LinkedIn](https://www.linkedin.com/in/felistas-ngumi-b6063192/LinkedIn) or drop me an [email](felistaswaceera@gmail.com). Happy hacking!
