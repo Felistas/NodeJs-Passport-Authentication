@@ -147,5 +147,5 @@ app.listen(port, async () => {
 });
 ```
 
-For a successful authentication, we need to register our applications callback URL and obtain the client secret and client id from the Facebook app developer console. 
+For a successful authentication, we need to register our applications callback URL and obtain the client secret and client id from the Facebook app developer console. Navigate to `https://developers.facebook.com/` and create an app. 
 
