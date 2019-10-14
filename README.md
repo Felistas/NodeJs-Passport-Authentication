@@ -56,3 +56,13 @@ In order for a successful user authentication to happen, a series of steps need 
 6. The resources server then validates the access token and if successful, the requested protected resources is shared with the client. 
 
 Note: OAuth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)
+
+## Passport
+According to the passport official documentation, it is an authentication middleware for Node Js and supports a number of strategies including FaceBook, Google, Twitter etc. Since we are using FaceBook, we will use the passport-faceBook strategy. Lets get our hands dirty and get the FaceBook authentication up and running. To start us of, run the following commands to install the various dependancies needed:
+
+```
+npm install passport
+npm install passport-facebook
+```
+
+
