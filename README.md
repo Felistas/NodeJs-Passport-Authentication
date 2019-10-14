@@ -64,5 +64,88 @@ According to the official documentation, passport an authentication middleware f
 npm install passport
 npm install passport-facebook
 ```
+The `passport-facebook` package enables us to authenticate users using Facebook. In `app/user/user.controller.js` replace the exising code with the following lines of code:
 
+```
+import passport from "passport";
+import strategy from "passport-facebook";
+
+const FacebookStrategy = strategy.Strategy;
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+      callbackURL: process.env.FACEBOOK_CALLBACK_URL
+    },
+    function(accessToken, refreshToken, profile, done) {
+      done(null, profile);
+    }
+  )
+);
+```
+Next, in `app/user/user.router.js` replace the existing code with:
+
+```
+import express from "express";
+import passport from "passport";
+
+const userRouter = express.Router();
+
+userRouter.get("/auth/facebook", passport.authenticate("facebook"));
+
+userRouter.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/fail"
+  })
+);
+
+userRouter.get("/fail", (req, res) => {
+  res.send("Failed attempt");
+});
+
+userRouter.get("/", (req, res) => {
+  res.send("Success");
+});
+export default userRouter;
+```
+In `app/index.js` add the following code snippet.
+
+```
+import express from "express";
+import { json } from "body-parser";
+import passport from "passport";
+import dotenv from "dotenv";
+
+import { connect } from "./utils/db";
+import userRouter from "./user/user.routes";
+
+const app = express();
+const port = 3000;
+
+dotenv.config();
+
+app.use(json());
+app.use(passport.initialize());
+
+app.use("/", userRouter);
+
+app.listen(port, async () => {
+  await connect();
+  console.log(`Server listening on ${port}`);
+});
+```
+
+For a successful authentication, we need to register our applications callback URL and obtain the client secret and client id from the Facebook app developer console. 
 
