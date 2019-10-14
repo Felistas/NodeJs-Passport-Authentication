@@ -55,4 +55,4 @@ In order for a successful user authentication to happen, a series of steps need 
 5. Our client then uses the access token to request the protected resource
 6. The resources server then validates the access token and if successful, the requested protected resources is shared with the client. 
 
-Note: OAuth2 has different types of grant types. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)
+Note: OAuth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)
