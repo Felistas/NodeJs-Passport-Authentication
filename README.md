@@ -168,3 +168,9 @@ FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback
 
 ```
 Ensure to obtain the keys from the app console. 
+
+## Testing
+In your browser, paste the following URL `http://localhost:3000/auth/facebook` and you should see the resulting screen below prompting you to enter your Facebook credential details. Upon successful validation of your credentials, you will be redirected to success screen as shown below:
+
+## Conclusion
+In this tutorial, we learned how to authenticate users using Facebook in a Node Js application. The process should also be simillar and straight forward for other platforms like Google, Github and Twitter. I would love to hear from you! You can reach me on [Twitter](https://twitter.com/WaceeraN),  [LinkedIn](https://www.linkedin.com/in/felistas-ngumi-b6063192/LinkedIn) or drop me an [email](felistaswaceera@gmail.com). Happy hacking!
