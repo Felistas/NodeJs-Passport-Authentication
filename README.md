@@ -149,3 +149,22 @@ app.listen(port, async () => {
 
 For a successful authentication, we need to register our applications callback URL and obtain the client secret and client id from the Facebook app developer console. Navigate to `https://developers.facebook.com/` and create an app. 
 
+![App](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/create-app.png)
+
+You will be then redirected to the app's dashboard which should be as shown below:
+
+![Dashboard](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/dashboard.png)
+
+Next, let's configure our callback URL by adding a platform under the basic tab in settings:
+
+![callback](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/dashboard-platform.png)
+
+Next, create a `.env` file and add the following:
+
+```
+FACEBOOK_CLIENT_ID=XXXXXXX
+FACEBOOK_CLIENT_SECRET=XXXXXXX
+FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback
+
+```
+Ensure to obtain the keys from the app console. 
