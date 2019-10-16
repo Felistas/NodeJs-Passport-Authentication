@@ -61,18 +61,19 @@ Note: OAuth2 has different types of grant types. For this tutorial, we will use 
 According to the official documentation, passport an authentication middleware for Node Js and supports a number of strategies including FaceBook, Google, Twitter etc. Now,lets get our hands dirty and get the FaceBook authentication up and running. To start us of, run the following commands to install the various dependencies needed:
 
 ```
-npm install passport
-npm install passport-facebook
+npm install passport passport-facebook --save 
 ```
 The `passport-facebook` package enables us to authenticate users using Facebook. In `app/user/user.controller.js` replace the existing code with the following lines of code:
 
 ```
 import passport from "passport";
 import strategy from "passport-facebook";
-import userModel from "../user/user.model";
+import dotenv from "dotenv";
 
 const FacebookStrategy = strategy.Strategy;
+import userModel from "../user/user.model";
 
+dotenv.config();
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -90,16 +91,18 @@ passport.use(
       profileFields: ["email", "name"]
     },
     function(accessToken, refreshToken, profile, done) {
+      const { email, first_name, last_name } = profile._json;
       const userData = {
-        email: profile._json.email,
-        firstName: profile._json.first_name,
-        lastName: profile._json.last_name
+        email: email,
+        firstName: first_name,
+        lastName: last_name
       };
       new userModel(userData).save();
       done(null, profile);
     }
   )
 );
+
 ```
 Next, in `app/user/user.router.js` replace the existing code with:
 
@@ -127,6 +130,7 @@ userRouter.get("/", (req, res) => {
   res.send("Success");
 });
 export default userRouter;
+
 ```
 
 Here, we have defined our callback URLs and specified successful and failure routes incase authentication fails i.e the `/` and `/fail` routes for success and failure respectively.  
@@ -137,7 +141,6 @@ In `app/index.js` add the following code snippet.
 import express from "express";
 import { json } from "body-parser";
 import passport from "passport";
-import dotenv from "dotenv";
 
 import { connect } from "./utils/db";
 import userRouter from "./user/user.routes";
@@ -145,17 +148,16 @@ import userRouter from "./user/user.routes";
 const app = express();
 const port = 3000;
 
-dotenv.config();
-
-app.use(json());
 app.use(passport.initialize());
 
+app.use(json());
 app.use("/", userRouter);
 
 app.listen(port, async () => {
   await connect();
   console.log(`Server listening on ${port}`);
 });
+
 ```
 
 For a successful authentication, we need to register our applications callback URL and obtain the client secret and client id from the Facebook app developer console. Navigate to `https://developers.facebook.com/` and create an app. 
