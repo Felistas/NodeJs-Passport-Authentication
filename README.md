@@ -67,11 +67,12 @@ The `passport-facebook` package enables us to authenticate users using Facebook.
 
 ```
 import passport from "passport";
-import strategy from "passport-facebook";
 import dotenv from "dotenv";
+import strategy from "passport-facebook";
+
+import userModel from "../user/user.model";
 
 const FacebookStrategy = strategy.Strategy;
-import userModel from "../user/user.model";
 
 dotenv.config();
 passport.serializeUser(function(user, done) {
@@ -93,7 +94,7 @@ passport.use(
     function(accessToken, refreshToken, profile, done) {
       const { email, first_name, last_name } = profile._json;
       const userData = {
-        email: email,
+        email,
         firstName: first_name,
         lastName: last_name
       };
@@ -109,6 +110,8 @@ Next, in `app/user/user.router.js` replace the existing code with:
 ```
 import express from "express";
 import passport from "passport";
+import userController from "./user.controller";
+
 
 const userRouter = express.Router();
 
@@ -130,6 +133,7 @@ userRouter.get("/", (req, res) => {
   res.send("Success");
 });
 export default userRouter;
+
 
 ```
 
