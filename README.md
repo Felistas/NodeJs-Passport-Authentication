@@ -69,6 +69,7 @@ The `passport-facebook` package enables us to authenticate users using Facebook.
 ```
 import passport from "passport";
 import strategy from "passport-facebook";
+import userModel from "../user/user.model";
 
 const FacebookStrategy = strategy.Strategy;
 
@@ -85,9 +86,16 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      callbackURL: process.env.FACEBOOK_CALLBACK_URL
+      callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+      profileFields: ["email", "name"]
     },
     function(accessToken, refreshToken, profile, done) {
+      const userData = {
+        email: profile._json.email,
+        firstName: profile._json.first_name,
+        lastName: profile._json.last_name
+      };
+      new userModel(userData).save();
       done(null, profile);
     }
   )
@@ -120,6 +128,9 @@ userRouter.get("/", (req, res) => {
 });
 export default userRouter;
 ```
+
+Here, we have defined our callback URLs and specified successful and failure routes incase authentication fails i.e the `/` and `/fail` routes for success and failure respectively.  
+
 In `app/index.js` add the following code snippet.
 
 ```
@@ -155,7 +166,8 @@ You will be then redirected to the app's dashboard which should be as shown belo
 
 ![Dashboard](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/dashboard.png)
 
-Next, let's configure our callback URL by adding a platform under the basic tab in settings:
+Next, let's configure our callback URL by adding a platform under the basic tab in settings: 
+Note: Ensure to select `website` as your platform type.
 
 ![callback](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/dashboard-platform.png)
 
@@ -169,6 +181,8 @@ FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback
 ```
 Ensure to obtain the keys from the app console. 
 
+
+
 ## Testing
 In your browser, paste the following URL `http://localhost:3000/auth/facebook` and you should see the resulting screen below prompting you to enter your Facebook credential details. 
 ![Facebook](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/facebook-login.png)
@@ -176,6 +190,16 @@ In your browser, paste the following URL `http://localhost:3000/auth/facebook` a
 Upon successful validation of your credentials, you will be redirected to success screen as shown below:
 
 ![Success](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/success.png)
+
+To understand the process flow, a number of steps need to be followed:
+1. Our app (i.e the client) through passport, creates a link to our authorization server i.e Facebook's authorization server. The link is simillar to https://www.facebook.com/login.php?skip_api_login=1&api_key=604879570044749&kid_directed_site=0&app_id=604879570044749&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv3.2%2Fdialog%2Foauth%3Fresponse_type%3Dcode%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Ffacebook%252Fcallback%26client_id%3D604879570044237824749%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3D9cdcc3d6-80fc-432c-aa6f-ede4b45eee43&cancel_url=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Ffacebook%2Fcallback%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=page&locale=en_GB which is displayed on the browser. This is the facebook authentication screen as you have seen from above.
+
+2. The end user then enters their facebook credentials.
+3. The authorization server authenticates the user and sends back the user back to the client with an authorization code. 
+4. The client then exchanges the authorization code with the authorization server in order to get an access token.
+5. The client then requests for resources from the resource server using this access token. The resources here include the email and the name as specified in the `profileFields` in our controller file. 
+
+Once we obtain this, we can now use our user model to save data in the database configured as shown above. 
 
 ## Conclusion
 In this tutorial, we learned how to authenticate users using Facebook in a Node Js application. The process should also be similar and straight forward for other platforms like Google, Github and Twitter. I would love to hear from you! You can reach me on [Twitter](https://twitter.com/WaceeraN),  [LinkedIn](https://www.linkedin.com/in/felistas-ngumi-b6063192/LinkedIn) or drop me an [email](felistaswaceera@gmail.com). Happy hacking!
