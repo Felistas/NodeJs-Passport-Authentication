@@ -7,6 +7,8 @@ Thanks to OAuth, we can use popular social media applications such as Google, Fa
  #explain more about OAuth
 
 ## Prerequisites
+You will need the following dependencies to complete this tutorial:
+
 1. [Node](https://nodejs.org/en/)
 2. [Facebook Developer account](https://developers.facebook.com/)
 3. [Mongo Db](https://docs.mongodb.com/manual/installation/)
