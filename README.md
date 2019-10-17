@@ -193,15 +193,15 @@ Ensure to obtain the keys from the app console.
 In your browser, paste the following URL `http://localhost:3000/auth/facebook` and you should see the resulting screen below prompting you to enter your Facebook credential details. 
 ![Facebook](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/facebook-login.png)
 
-Upon successful validation of your credentials, you will be redirected to success screen as shown below:
+Upon successful validation of your credentials, you will be redirected to a success screen as shown below:
 
 ![Success](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/success.png)
 
 To understand the process flow, a number of steps need to be followed:
-1. Our app (i.e the client) through passport, creates a link to our authorization server i.e Facebook's authorization server. The link is simillar to https://www.facebook.com/login.php?skip_api_login=1&api_key=604879570044749&kid_directed_site=0&app_id=604879570044749&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv3.2%2Fdialog%2Foauth%3Fresponse_type%3Dcode%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Ffacebook%252Fcallback%26client_id%3D604879570044237824749%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3D9cdcc3d6-80fc-432c-aa6f-ede4b45eee43&cancel_url=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Ffacebook%2Fcallback%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=page&locale=en_GB which is displayed on the browser. This is the facebook authentication screen as you have seen from above.
+1. Our app (i.e the client) through Passport, creates a link to our authorization server i.e Facebook's authorization server. The link is simillar to https://www.facebook.com/login.php?skip_api_login=1&api_key=604879570044749&kid_directed_site=0&app_id=604879570044749&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv3.2%2Fdialog%2Foauth%3Fresponse_type%3Dcode%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Ffacebook%252Fcallback%26client_id%3D604879570044237824749%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3D9cdcc3d6-80fc-432c-aa6f-ede4b45eee43&cancel_url=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Ffacebook%2Fcallback%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=page&locale=en_GB which is displayed on the browser. This is the facebook authentication screen as you have seen from above.
 
-2. The end user then enters their facebook credentials.
-3. The authorization server authenticates the user and sends back the user back to the client with an authorization code. 
+2. The end user then enters their Facebook credentials.
+3. The authorization server authenticates the user and sends the user back to the client with an authorization code. 
 4. The client then exchanges the authorization code with the authorization server in order to get an access token.
 5. The client then requests for resources from the resource server using this access token. The resources here include the email and the name as specified in the `profileFields` in our controller file. 
 
