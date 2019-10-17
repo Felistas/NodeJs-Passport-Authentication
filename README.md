@@ -34,9 +34,9 @@ To confirm everything is working as expected, open your preferred REST Client (I
 
 ## Project Setup
 
-In order to understand how our project is set up, we will go through the individual folder structures which follow the MVC (Model View Controller) pattern. Just a recap of the MVC pattern, the model defines the schema of the data in the database and how it will be stored. Controllers hold the business logic of the application while view holds all our routes.
+In order to understand how our project is set up, we will go through the individual folder structures which follow the MVC (Model View Controller) pattern. As a recap of the MVC pattern, the model defines the schema of the data in the database and how it will be stored. Controllers hold the business logic of the application while the view holds all our routes.
 
-Inside the `app` folder, we have ` user` and `utils` folders which are responsible for the user resource and database configuration respectively. The `index.js` file, which is the entry point of our app, is responsible for express setup. In this project, I will use ES6 then use Babel to compile the code. I have also configured nodemon to listen to any changes made to the app then reload the server.
+Inside the `app` folder, we have ` user` and `utils` folders which are responsible for the user resource and database configuration respectively. The `index.js` file, which is the entry point of our app, is responsible for express setup. In this project, we will use ES6 and Babel to compile the code. I have also configured [nodemon](https://nodemon.io/) to listen to any changes made to the app then reload the server.
 
 ## OAuth 2
 [OAuth 2](https://oauth.net/2/) is an authorization framework that allows third-party applications to obtain limited access to HTTP services, either on behalf of the resource owner without having them provide their login credentials to a third-party app or by allowing these third-party applications to obtain access on their own behalfs. Case in example here would be the application we are building acting as a third party application, facebook being our HTTP service and the end user as the resource owner. These three fall under the following OAuth roles:
