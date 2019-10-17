@@ -39,23 +39,25 @@ In order to understand how our project is set up, we will go through the individ
 Inside the `app` folder, we have ` user` and `utils` folders which are responsible for the user resource and database configuration respectively. The `index.js` file, which is the entry point of our app, is responsible for express setup. In this project, I will use ES6 then use Babel to compile the code. I have also configured nodemon to listen to any changes made to the app then reload the server.
 
 ## OAuth 2
-[OAuth 2](https://oauth.net/2/) is an authorization framework that allows third-party applications to obtain limited access to HTTP services, either on behalf of the resource owner without having them provide their login credentials to a third-party app or by allowing these third-party applications to obtain access on their own behalfs. Case in example here would be the application we are building acting as a third party application, facebook being our HTTP service and the end user as the resource owner. These three fall under the following OAuth roles:
+[OAuth 2](https://oauth.net/2/) is an authorization framework that allows third-party applications to obtain limited access to HTTP services, either on behalf of the resource owner or by allowing these third-party applications to obtain access on their own behalfs. In either case, the owner does not have to provide their login credentials directly to the application.
 
-1. Resource Owner/ End user - this is the user authorizing a third-party application to access certain protected resources from a resource server. 
-2. Client - This is the third party application making protected resource requests to a resource server on behalf of the resource owner
-3. Resource Server -  Hosts the protected resources e.g user profile
-4. Authorization Server - Responsible for authenticating the resource owner and providing access token to clients 
+In our case, the application we are building would be the third party application. Facebook would be our HTTP service and the end user the resource owner. These three fall under the following OAuth roles:
+
+1. Resource Owner/ End user - This is the user authorizing a third-party application to access certain protected resources from a resource server. 
+2. Client - This is the third party application making protected resource requests to a resource server on behalf of the resource owner.
+3. Resource Server - Hosts the protected resources e.g user profile.
+4. Authorization Server - Responsible for authenticating the resource owner and providing access token to clients.
 
 In order for successful user authentication to happen, a series of steps need to be followed:
 
-1. The client,(which is our application in this case), requests authorization from the end-user. 
+1. The client, (which is our application in this case), requests authorization from the end-user. 
 2. Once the end-user authorizes the client, an application grant is issued.
 3. Our client then requests an access token from the authorization server using the authorization grant. 
 4. The authorization server validates the grant and authenticates the client. If the two processes are successful an access token is granted to the client. 
-5. Our client then uses the access token to request the protected resource
+5. Our client then uses the access token to request the protected resource.
 6. The resources server then validates the access token and if successful, the requested protected resources are shared with the client. 
 
-Note: OAuth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)
+**Note:** ***Auth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)***
 
 ## Passport
 According to the official documentation, passport an authentication middleware for Node Js and supports a number of strategies including Facebook, Google, Twitter, etc. Now, lets get our hands dirty and get the FaceBook authentication up and running. To start us off, run the following commands to install the various dependencies needed:
