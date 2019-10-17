@@ -1,10 +1,12 @@
 # FaceBook Social Authentication in Node/Express Js with Passport
 ## Introduction
-Almost all applications today, require users to create accounts on their websites in order to use certain services. This repetitive process of setting up new profiles and creating new passwords for every application is not only time consuming but also frustrating, and over time, account management becomes hard since one has to remember their credential details in every application. 
+Almost all applications require users to create accounts on their websites in order to use certain services. This repetitive process of setting up new profiles and creating new passwords for every application is not only time consuming, but frustrating, and over time, account management becomes hard remembering credentials for every application. 
 
-Thanks to OAuth, we can use popular social media applications such as Google, Facebook and Twitter to authenticate users. This process is faster and familiar to the users hence a high chance of most of them agreeing to use your services. So why not integrate it into your application? In this tutorial, I will take you through on how to integrate FaceBook into your Node Js application.
+Thanks to [OAuth](https://oauth.net/), we can use popular social media applications such as Google, Facebook and Twitter to authenticate users. This process makes implementing authentication easier and increases adoption due to existing trust built with the social network. So why not integrate it into your application?
 
- #explain more about OAuth
+In this tutorial, I will take you through how to integrate Facebook into your Node.js application.
+
+#explain more about OAuth
 
 ## Prerequisites
 1. [Node](https://nodejs.org/en/)
