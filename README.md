@@ -58,14 +58,15 @@ In order for successful user authentication to happen, a series of steps need to
 Note: OAuth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)
 
 ## Passport
-According to the official documentation, passport an authentication middleware for Node Js and supports a number of strategies including Facebook, Google, Twitter, etc. Now, lets get our hands dirty and get the FaceBook authentication up and running. To start us off, run the following commands to install the various dependencies needed:
+According to the official documentation, [Passport](http://www.passportjs.org/) an authentication middleware for Node.js supports a number of strategies including Facebook, Google, Twitter, etc. Now, lets get our hands dirty and get the FaceBook authentication up and running. To start off, run the following commands to install the various dependencies needed:
 
+```bash
+$ npm install passport passport-facebook --save 
 ```
-npm install passport passport-facebook --save 
-```
+
 The `passport-facebook` package enables us to authenticate users using Facebook. In `app/user/user.controller.js` replace the existing code with the following lines of code:
 
-```
+```javascript
 import passport from "passport";
 import dotenv from "dotenv";
 import strategy from "passport-facebook";
@@ -103,11 +104,11 @@ passport.use(
     }
   )
 );
-
 ```
+
 Next, in `app/user/user.router.js` replace the existing code with:
 
-```
+```javascript
 import express from "express";
 import passport from "passport";
 import userController from "./user.controller";
@@ -133,15 +134,13 @@ userRouter.get("/", (req, res) => {
   res.send("Success");
 });
 export default userRouter;
-
-
 ```
 
 Here, we have defined our callback URLs and specified successful and failure routes in case authentication fails i.e the `/` and `/fail` routes for success and failure respectively.  
 
 In `app/index.js` add the following code snippet.
 
-```
+```javascript
 import express from "express";
 import { json } from "body-parser";
 import passport from "passport";
@@ -161,23 +160,22 @@ app.listen(port, async () => {
   await connect();
   console.log(`Server listening on ${port}`);
 });
-
 ```
 
 For successful authentication, we need to register our application callback URL and obtain the client secret and client id from the Facebook app developer console. Navigate to `https://developers.facebook.com/` and create an app. 
 
 ![App](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/create-app.png)
 
-You will be then redirected to the app's dashboard which should be as shown below:
+You will then be redirected to the app's dashboard which should be as shown below:
 
 ![Dashboard](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/dashboard.png)
 
 Next, let's configure our callback URL by adding a platform under the basic tab in settings: 
-Note: Ensure to select a `website` as your platform type.
+**Note:** ***Be sure to select a `website` as your platform type.***
 
 ![callback](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/dashboard-platform.png)
 
-Next, create a `.env` file and add the following:
+Next, create a `.env` file in our project directory and add the following:
 
 ```
 FACEBOOK_CLIENT_ID=XXXXXXX
@@ -185,9 +183,7 @@ FACEBOOK_CLIENT_SECRET=XXXXXXX
 FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback
 
 ```
-Ensure to obtain the keys from the app console. 
-
-
+Be sure to obtain the keys from the app console. 
 
 ## Testing
 In your browser, paste the following URL `http://localhost:3000/auth/facebook` and you should see the resulting screen below prompting you to enter your Facebook credential details. 
