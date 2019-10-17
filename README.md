@@ -13,20 +13,21 @@ Thanks to OAuth, we can use popular social media applications such as Google, Fa
 
 ## Getting Started
 Follow the instructions below in your preferred terminal in order to set up your development environment:
-```
-mkdir demo
-cd demo
-git clone https://github.com/Felistas/NodeJs-Passport-Authentication.git
-cd NodeJs-Passport-Authentication
+
+```bash
+$ mkdir demo
+$ cd demo
+$ git clone https://github.com/Felistas/NodeJs-Passport-Authentication.git
+$ cd NodeJs-Passport-Authentication
 ```
 
 Next run:
 ```
-npm install
-npm start
+$ npm install
+$ npm start
 ```
 
-To confirm everything is working as expected, open your preferred REST Client (Insomnia is my preference) then make a GET request to the following endpoint `http://localhost:3000/users` and confirm the response is as below:
+To confirm everything is working as expected, open your preferred REST Client (Insomnia is my preference) and make a GET request to the following endpoint `http://localhost:3000/users`. Confirm the response is as below:
 
 
 ![Home](https://github.com/Felistas/NodeJs-Passport-Authentication/blob/master/Screen%20Shot%202019-10-09%20at%2017.28.04.png)
