@@ -1,12 +1,11 @@
 # FaceBook Social Authentication in Node/Express Js with Passport
 ## Introduction
-Almost all applications require users to create accounts on their websites in order to use certain services. This repetitive process of setting up new profiles and creating new passwords for every application is not only time consuming, but frustrating, and over time, account management becomes hard remembering credentials for every application. 
+Almost all applications require users to create accounts on their websites in order to use certain services. This repetitive process of setting up new profiles and creating new passwords for every application is not only time consuming, but also frustrating, and over time, account management becomes hard. 
 
 Thanks to [OAuth](https://oauth.net/), we can use popular social media applications such as Google, Facebook and Twitter to authenticate users. This process makes implementing authentication easier and increases adoption due to existing trust built with the social network. So why not integrate it into your application?
 
 In this tutorial, I will take you through how to integrate Facebook into your Node.js application.
 
-#explain more about OAuth
 
 ## Prerequisites
 You will need the following dependencies to complete this tutorial:
@@ -46,7 +45,7 @@ Inside the `app` folder, we have ` user` and `utils` folders which are responsib
 ## OAuth 2
 [OAuth 2](https://oauth.net/2/) is an authorization framework that allows third-party applications to obtain limited access to HTTP services, either on behalf of the resource owner or by allowing these third-party applications to obtain access on their own behalfs. In either case, the owner does not have to provide their login credentials directly to the application.
 
-In our case, the application we are building would be the third party application. Facebook would be our HTTP service and the end user the resource owner. These three fall under the following OAuth roles:
+In our case, the application we are building would be the third party application. Facebook would be our HTTP service and the end user will be the resource owner. These three fall under the following OAuth roles:
 
 1. Resource Owner/ End user - This is the user authorizing a third-party application to access certain protected resources from a resource server. 
 2. Client - This is the third party application making protected resource requests to a resource server on behalf of the resource owner.
@@ -62,7 +61,7 @@ In order for successful user authentication to happen, a series of steps need to
 5. Our client then uses the access token to request the protected resource.
 6. The resources server then validates the access token and if successful, the requested protected resources are shared with the client. 
 
-**Note:** ***Auth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)***
+**Note:** ***OAuth2 has different types of grant types. For this tutorial, we will use the Authorization code grant type. To learn more about OAuth2, you can have a look [here](https://tools.ietf.org/html/rfc6749)***
 
 ## Passport
 According to the official documentation, [Passport](http://www.passportjs.org/) an authentication middleware for Node.js supports a number of strategies including Facebook, Google, Twitter, etc. Now, lets get our hands dirty and get the FaceBook authentication up and running. To start off, run the following commands to install the various dependencies needed:
